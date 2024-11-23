@@ -4,7 +4,6 @@ import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
 import java.time.LocalDateTime
 
-class ReservRoom {
 
     /*Representa uma reserva de sala*/
     @Document(collection = "reservas")
@@ -15,5 +14,6 @@ class ReservRoom {
         val usuario: String,   /* Nome do usuário que fez a reserva*/
         val inicio: LocalDateTime, /* Data e hora de início da reserva*/
         val fim: LocalDateTime   /* Data e hora de término da reserva*/
+
+
     )
-}
