@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Sala de Reunião.iml" filepath="$PROJECT_DIR$/.idea/Sala de Reunião.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/MeetingRoom-ReservationSystem.iml" filepath="$PROJECT_DIR$/.idea/MeetingRoom-ReservationSystem.iml" />
     </modules>
   </component>
 </project>
