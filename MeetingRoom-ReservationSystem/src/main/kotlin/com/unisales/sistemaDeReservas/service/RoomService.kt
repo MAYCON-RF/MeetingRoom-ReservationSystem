@@ -34,6 +34,7 @@ class RoomService(
                 roomRepository.save(novaRoom)
             }
     }
+
     fun DeletaRoom(id: String): Mono<Void> {
         return RoomRepository.deleteById(id)
     }

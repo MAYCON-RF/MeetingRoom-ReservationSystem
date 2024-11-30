@@ -8,13 +8,9 @@ import org.springframework.web.bind.annotation.*
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 
-
-
 @RestController
 @RequestMapping("/rooms")
 class RoomController(private val roomService: RoomService) {
-
-
 
     /* Cria uma nova sala, define a rota POST para "/rooms".e retorna o código 201
      em caso de sucesso.
@@ -25,21 +21,15 @@ class RoomController(private val roomService: RoomService) {
         return roomService.criarRoom(room)
     }
 
-
-
-
     /*busca uma sala específica pelo ID define a rota GET para "/rooms/{idRoom}",
      mapeia o valor da variável idRoom da URL para o parâmetro do método. e Retorna
      a sala encontrada ou um erro caso não seja encontrada.
      */
     @GetMapping("/{idRoom}")
     fun buscarRoom(@PathVariable idRoom: String): Mono<Room> {
-        return roomService.buscarRoomsAtivas()
-            .filter { it.idRoom == idRoom }
-            .next()
+        return roomService.buscarRoomsAtivas().filter { it.idRoom == idRoom }.next()
             .switchIfEmpty(Mono.error(IllegalArgumentException("Room não encontrada")))
     }
-
 
     /* Atualiza os dados de uma sala existente pelo ID, define a rota PUT para "/rooms/{idRoom}",
     mapeia o valor da variável idRoom da URL para o parâmetro do método e atualiza os
@@ -57,7 +47,6 @@ class RoomController(private val roomService: RoomService) {
     @GetMapping
     fun listarRooms(): Flux<Room> = roomService.buscarRoomsAtivas()
 
-
     /*deletar salas criadas*/
     @DeleteMapping("/{id}")
     fun deletarSala(@PathVariable id: String): Mono<ResponseEntity<Void>> {
@@ -67,6 +56,5 @@ class RoomController(private val roomService: RoomService) {
                 Mono.just(ResponseEntity.status(HttpStatus.NOT_FOUND).build()) // Retorna 404 se não encontrado
             }
     }
-
 
 }
